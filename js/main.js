@@ -29,7 +29,7 @@ async function searchRecipes(searchTerm) {
     // Omvandlar JSON-svaret till ett JavaScript-objekt
     const data = await response.json();
 
-    // Tillfällig utskrift för att kontrollera API-svaret / Flesökning
+    // Tillfällig utskrift för att kontrollera API-svaret / Felsökning
     console.log(data);
 
     messageElement.textContent = "";
