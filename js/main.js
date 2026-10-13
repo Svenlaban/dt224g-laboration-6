@@ -29,8 +29,19 @@ async function searchRecipes(searchTerm) {
     // Omvandlar JSON-svaret till ett JavaScript-objekt
     const data = await response.json();
 
+    // Kollar om sökningen gav några recept
+    if (data.recipes.length === 0) {
+      messageElement.textContent = "Inga recept hittades.";
+      recipeSection.innerHTML = "";
+      return;
+    }
+
+    // Hämtar det första receptet i sökningen
+    const recipe = data.recipes[0];
+
     // Tillfällig utskrift för att kontrollera API-svaret / Felsökning
-    console.log(data);
+    console.log(recipe);
+    
 
     messageElement.textContent = "";
   } catch (error) {
