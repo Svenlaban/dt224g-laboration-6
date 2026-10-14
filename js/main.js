@@ -62,12 +62,18 @@ function displayRecipe(recipe) {
   // Skapar receptets HTML-element
   const article = document.createElement("article");
   const heading = document.createElement("h3");
+  const image = document.createElement("img");
 
-  // Lägger in receptets namn i rubriken
+  // Lägger in receptets information
   heading.textContent = recipe.name;
+  image.src = recipe.image;
+  image.alt = recipe.name;
 
-  // Lägger rubriken i artikeln och artikeln på sidan
+  // Lägger elementen i artikeln
   article.appendChild(heading);
+  article.appendChild(image);
+
+  // Lägger artikeln i receptsektionen
   recipeSection.appendChild(article);
 }
 
