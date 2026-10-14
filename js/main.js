@@ -38,6 +38,9 @@ async function searchRecipes(searchTerm) {
 
     // Hämtar det första receptet i sökningen
     const recipe = data.recipes[0];
+    
+    // Visar receptet
+    displayRecipe(recipe);
 
     // Tillfällig utskrift för att kontrollera API-svaret / Felsökning
     console.log(recipe);
@@ -49,6 +52,23 @@ async function searchRecipes(searchTerm) {
     messageElement.textContent =
       "Något gick fel när recepten skulle hämtas.";
   }
+}
+
+// Visar receptet på webbsidan
+function displayRecipe(recipe) {
+  // Tar bort ett tidigare visat recept
+  recipeSection.innerHTML = "";
+
+  // Skapar receptets HTML-element
+  const article = document.createElement("article");
+  const heading = document.createElement("h3");
+
+  // Lägger in receptets namn i rubriken
+  heading.textContent = recipe.name;
+
+  // Lägger rubriken i artikeln och artikeln på sidan
+  article.appendChild(heading);
+  recipeSection.appendChild(article);
 }
 
 // Hanterar formuläret för receptsökning
