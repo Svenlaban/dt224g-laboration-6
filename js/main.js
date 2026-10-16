@@ -63,15 +63,37 @@ function displayRecipe(recipe) {
   const article = document.createElement("article");
   const heading = document.createElement("h3");
   const image = document.createElement("img");
+  const recipeInfo = document.createElement("div");
+
+  // Ger inforutan samma klass som finns i CSS-filen
+  recipeInfo.classList.add("recipe-info");
 
   // Lägger in receptets information
   heading.textContent = recipe.name;
   image.src = recipe.image;
   image.alt = recipe.name;
 
+  // Skapar information om receptet
+  const servings = document.createElement("p");
+  const prepTime = document.createElement("p");
+  const cookTime = document.createElement("p");
+  const difficulty = document.createElement("p");
+
+  servings.textContent = "Servings: " + recipe.servings;
+  prepTime.textContent = "Prep time: " + recipe.prepTimeMinutes + " minutes";
+  cookTime.textContent = "Cooking time: " + recipe.cookTimeMinutes + " minutes";
+  difficulty.textContent = "Difficulty: " + recipe.difficulty;
+
+  // Lägger informationen i informationsrutan
+  recipeInfo.appendChild(servings);
+  recipeInfo.appendChild(prepTime);
+  recipeInfo.appendChild(cookTime);
+  recipeInfo.appendChild(difficulty);
+
   // Lägger elementen i artikeln
   article.appendChild(heading);
   article.appendChild(image);
+  article.appendChild(recipeInfo);
 
   // Lägger artikeln i receptsektionen
   recipeSection.appendChild(article);
