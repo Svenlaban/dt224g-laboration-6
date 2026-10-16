@@ -11,7 +11,10 @@ const errorElement = document.querySelector("#error");
 const messageElement = document.querySelector("#message");
 const recipeSection = document.querySelector("#recipe");
 
-// Hämtar recept från API @param {string} searchTerm
+/**
+ * Hämtar recept från API:t.
+ * @param {string} searchTerm
+ */
 async function searchRecipes(searchTerm) {
   // Visar att sökningen har startat
   messageElement.textContent = "Söker efter recept...";
@@ -38,23 +41,23 @@ async function searchRecipes(searchTerm) {
 
     // Hämtar det första receptet i sökningen
     const recipe = data.recipes[0];
-    
+
     // Visar receptet
     displayRecipe(recipe);
-
-    // Tillfällig utskrift för att kontrollera API-svaret / Felsökning
-    console.log(recipe);
-    
 
     messageElement.textContent = "";
   } catch (error) {
     console.error(error);
+    recipeSection.innerHTML = "";
     messageElement.textContent =
       "Något gick fel när recepten skulle hämtas.";
   }
 }
 
-// Visar receptet på webbsidan
+/**
+ * Skapar och visar ett recept på webbsidan.
+ * @param {object} recipe
+ */
 function displayRecipe(recipe) {
   // Tar bort ett tidigare visat recept
   recipeSection.innerHTML = "";
@@ -79,10 +82,20 @@ function displayRecipe(recipe) {
   const cookTime = document.createElement("p");
   const difficulty = document.createElement("p");
 
-  servings.textContent = "Servings: " + recipe.servings;
-  prepTime.textContent = "Prep time: " + recipe.prepTimeMinutes + " minutes";
-  cookTime.textContent = "Cooking time: " + recipe.cookTimeMinutes + " minutes";
-  difficulty.textContent = "Difficulty: " + recipe.difficulty;
+  servings.innerHTML = "<strong>Servings:</strong> " + recipe.servings;
+
+  prepTime.innerHTML =
+    "<strong>Prep time:</strong> " +
+    recipe.prepTimeMinutes +
+    " minutes";
+
+  cookTime.innerHTML =
+    "<strong>Cooking time:</strong> " +
+    recipe.cookTimeMinutes +
+    " minutes";
+
+  difficulty.innerHTML =
+    "<strong>Difficulty:</strong> " + recipe.difficulty;
 
   // Lägger informationen i informationsrutan
   recipeInfo.appendChild(servings);
