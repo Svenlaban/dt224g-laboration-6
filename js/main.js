@@ -90,10 +90,25 @@ function displayRecipe(recipe) {
   recipeInfo.appendChild(cookTime);
   recipeInfo.appendChild(difficulty);
 
+  // Skapar rubrik och lista för ingredienser
+  const ingredientsHeading = document.createElement("h4");
+  const ingredientsList = document.createElement("ul");
+
+  ingredientsHeading.textContent = "Ingredients";
+
+  // Skapar ett listelement för varje ingrediens
+  for (let index = 0; index < recipe.ingredients.length; index++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = recipe.ingredients[index];
+    ingredientsList.appendChild(listItem);
+  }
+
   // Lägger elementen i artikeln
   article.appendChild(heading);
   article.appendChild(image);
   article.appendChild(recipeInfo);
+  article.appendChild(ingredientsHeading);
+  article.appendChild(ingredientsList);
 
   // Lägger artikeln i receptsektionen
   recipeSection.appendChild(article);
