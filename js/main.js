@@ -103,12 +103,27 @@ function displayRecipe(recipe) {
     ingredientsList.appendChild(listItem);
   }
 
+  // Skapar rubrik och lista för instruktionerna
+  const instructionsHeading = document.createElement("h4");
+  const instructionsList = document.createElement("ol");
+
+  instructionsHeading.textContent = "Instructions";
+
+  // Skapar ett listelement för varje instruktion
+  for (let index = 0; index < recipe.instructions.length; index++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = recipe.instructions[index];
+    instructionsList.appendChild(listItem);
+  }
+
   // Lägger elementen i artikeln
   article.appendChild(heading);
   article.appendChild(image);
   article.appendChild(recipeInfo);
   article.appendChild(ingredientsHeading);
   article.appendChild(ingredientsList);
+  article.appendChild(instructionsHeading);
+  article.appendChild(instructionsList);
 
   // Lägger artikeln i receptsektionen
   recipeSection.appendChild(article);
